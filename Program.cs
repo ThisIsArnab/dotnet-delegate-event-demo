@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using DotnetDelegateEvents.EventDemo;
 using DotnetDelegateEvents.Sorting;
 
 Console.WriteLine("Hello, World!");
@@ -25,3 +26,7 @@ var stars = new List<Star>(new Star[] {
 // AstronomicalSorter.SortStars(stars, AstronomicalSorter.GetComparer<Star>(x => x.DiameterTimesSun));
 AstronomicalSorter.Sort(stars, AstronomicalSorter.GetComparer<Star>(x => x.DiameterTimesSun));
 Console.WriteLine(string.Join(", ", stars.Select(star => star.DiameterTimesSun)));
+
+
+// Search a file in a directory
+EventDemo.SearchFile(@"D:\dev_temp\dotnetDelegateEvents", "AstronomicalSorter.cs");

@@ -1,5 +1,8 @@
 namespace DotnetDelegateEvents.Sorting;
 
+/// <summary>
+/// This class is a example of using degegate pattern in .net
+/// </summary>
 public static class AstronomicalSorter
 {
     public delegate float Comparison<in T>(T left, T right);
