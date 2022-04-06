@@ -4,24 +4,6 @@ public static class AstronomicalSorter
 {
     public delegate float Comparison<in T>(T left, T right);
 
-    // public static void Sort<T>(IList<T> astronomicalBodies, Comparison<T> comparator)
-    // {
-    //     Sorter(astronomicalBodies, comparator);
-    // }
-
-    // public static void SortStars(IList<Star> stars, Comparison<Star> comparator)
-    // {
-    //     Sorter(stars, comparator);
-    // }
-
-    // public static  void SortBlackHoles(IList<BlackHole> blackHoles, Comparison<BlackHole> comparator) {
-    //     Sorter(blackHoles, comparator);
-    // }
-
-    // public static void SortGalaxies(IList<Galaxy> galaxies, Comparison<Galaxy> comparator) {
-    //     Sorter(galaxies, comparator);
-    // }
-
     public static Comparison<T> GetComparer<T>(Func<T, IComparable> property)
     {
         return (astronomicalBodyA, astronomicalBodyB) => property(astronomicalBodyA).CompareTo(property(astronomicalBodyB));
@@ -48,14 +30,6 @@ public static class AstronomicalSorter
         }
     }
 }
-
-// public static class ComparerHelper
-// {
-//     public static AstronomicalSorter.Comparison<T> GetComparer<T>(Func<T, IComparable> property)
-//     {
-//         return (astronomicalBodyA, astronomicalBodyB) => property(astronomicalBodyA).CompareTo(property(astronomicalBodyB));
-//     }
-// }
 
 public class Star
 {
