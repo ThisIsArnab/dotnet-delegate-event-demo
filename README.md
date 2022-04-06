@@ -96,6 +96,6 @@ Event Source (Producer) <--> Event Sink (Consumer)
     e.g. `List.Sort()` must be supplied with a comparer function. This is a candidate to implement delegate.  
   * When calling subscribers optional - use events.
   e.g. Consider 'progress' oeration. Task continues to roceed whether or not there are any listeners. This is a perfect candidate for event pattern.
-  * Delegates can have return values but events don't. Event return type is void. So, async events needs to be declared void async.
+  * Delegates can have return values but events don't. EventHandler return type is void. So, async event handlers needs to be declared void async.
   * Event invocation can only be done in the class where the event was declared not any other class.
 
