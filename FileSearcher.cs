@@ -15,6 +15,24 @@ public class FileSearcher
             FileFound?.Invoke(this, new FileFoundArgs(file));
         }
     }
+
+    /// <summary>
+    /// As you will see, the Invoke() method calls the lambda and the execution context moves to the lambda and
+    /// then retuns back to this List() method
+    /// </summary>
+    public void List(string directory, string searchPattern)
+    {
+        foreach (var file in Directory.EnumerateFiles(directory, searchPattern))
+        {
+            var args = new FileFoundArgs(file);
+            FileFound?.Invoke(this, args);
+
+            if(args.CancelRequested)
+            {
+                break;
+            }
+        }
+    }
 }
 
 /// <summary>
@@ -25,6 +43,8 @@ public class FileSearcher
 public class FileFoundArgs: EventArgs
 {
     public string FoundFile { get; }
+
+    public bool CancelRequested { get; set; }
 
     public FileFoundArgs(string fileName)
     {

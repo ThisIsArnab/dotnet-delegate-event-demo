@@ -13,9 +13,37 @@ public static class EventDemo
         {
             filesFound++;
             Console.WriteLine($"Found {eventArgs.FoundFile}!");
-            System.Console.WriteLine("Files found: " + filesFound);
+            Console.WriteLine("Files found: " + filesFound);
         };
 
         fileSearcher.Search(directory, searchPattern);
+    }
+
+    /// <summary>
+    /// Overloaded method to stop searching after certain number of files are found
+    /// </summary>
+    public static void SearchFile(string directory, string searchPattern, int searchCount)
+    {
+        if (searchCount == 0)
+        {
+            return;
+        }
+
+        int filesFound = 0;
+        FileSearcher fileSearcher = new();
+
+        fileSearcher.FileFound += (sender, eventArgs) =>
+        {
+            filesFound++;
+            Console.WriteLine($"Found {eventArgs.FoundFile}!");
+            Console.WriteLine("Files found: " + filesFound);
+
+            if(filesFound == searchCount)
+            {
+                eventArgs.CancelRequested = true;
+            }
+        };
+
+        fileSearcher.List(directory, searchPattern);
     }
 }

@@ -27,6 +27,8 @@ var stars = new List<Star>(new Star[] {
 AstronomicalSorter.Sort(stars, AstronomicalSorter.GetComparer<Star>(x => x.DiameterTimesSun));
 Console.WriteLine(string.Join(", ", stars.Select(star => star.DiameterTimesSun)));
 
-
 // Search a file in a directory
 EventDemo.SearchFile(@"D:\dev_temp\dotnetDelegateEvents", "AstronomicalSorter.cs");
+
+// Search with cancellation option
+EventDemo.SearchFile(@"D:\dev_temp\dotnetDelegateEvents", "*.cs", searchCount: 2);
